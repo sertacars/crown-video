@@ -1,32 +1,38 @@
-Users table:
+CREATE TABLE users (
+    user_id INT NOT NULL AUTO_INCREMENT,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    PRIMARY KEY (user_id)
+);
 
-user_id (INT, NOT NULL, AUTO_INCREMENT, PRIMARY KEY)
-username (VARCHAR(255), NOT NULL, UNIQUE)
-email (VARCHAR(255), NOT NULL, UNIQUE)
-password (VARCHAR(255), NOT NULL)
+CREATE TABLE movies (
+    movie_id INT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    release_date DATE NOT NULL,
+    PRIMARY KEY (movie_id)
+);
 
-Movies table:
+CREATE TABLE tv_shows (
+    tv_show_id INT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    release_date DATE NOT NULL,
+    PRIMARY KEY (tv_show_id)
+);
 
-movie_id (INT, NOT NULL, AUTO_INCREMENT, PRIMARY KEY)
-title (VARCHAR(255), NOT NULL)
-release_date (DATE, NOT NULL)
+CREATE TABLE seasons (
+    season_id INT NOT NULL AUTO_INCREMENT,
+    tv_show_id INT NOT NULL,
+    season_number INT NOT NULL,
+    FOREIGN KEY (tv_show_id) REFERENCES tv_shows(tv_show_id),
+    PRIMARY KEY (season_id)
+);
 
-TV Shows table:
-
-tv_show_id (INT, NOT NULL, AUTO_INCREMENT, PRIMARY KEY)
-title (VARCHAR(255), NOT NULL)
-release_date (DATE, NOT NULL)
-
-Seasons table:
-
-season_id (INT, NOT NULL, AUTO_INCREMENT, PRIMARY KEY)
-tv_show_id (INT, NOT NULL, FOREIGN KEY (tv_show_id) REFERENCES TV Shows(tv_show_id))
-season_number (INT, NOT NULL)
-
-Episodes table:
-
-episode_id (INT, NOT NULL, AUTO_INCREMENT, PRIMARY KEY)
-season_id (INT, NOT NULL, FOREIGN KEY (season_id) REFERENCES Seasons(season_id))
-title (VARCHAR(255), NOT NULL)
-release_date (DATE, NOT NULL)
-
+CREATE TABLE episodes (
+    episode_id INT NOT NULL AUTO_INCREMENT,
+    season_id INT NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    release_date DATE NOT NULL,
+    FOREIGN KEY (season_id) REFERENCES seasons(season_id),
+    PRIMARY KEY (episode_id)
+);
