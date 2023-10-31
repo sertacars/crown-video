@@ -11,7 +11,7 @@ async def get_movies():
     """Get a list of all movies."""
 
     connection = pymysql.connect(
-        host="localhost", user="root", password="", database="crownie_database"
+        host="localhost", user="root", password="", database="crown_db"
     )
     cursor = connection.cursor()
 
