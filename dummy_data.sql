@@ -1,8 +1,8 @@
 -- Users table
 INSERT INTO users (username, email, password) VALUES
 ('john_doe', 'john.doe@example.com', 'password123'),
-('jane_doe', 'jane.doe@example.com', 'password123'),
-('admin', 'admin@example.com', 'password123');
+('kane_boo', 'kane.boo@example.com', 'password456'),
+('admin', 'admin@example.com', 'password789');
 
 -- Movies table
 INSERT INTO movies (title, release_date) VALUES
