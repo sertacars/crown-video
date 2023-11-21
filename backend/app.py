@@ -5,7 +5,7 @@ import pymysql
 
 app = FastAPI()
 
-# Get/Set Methods
+# Get a list of all movies
 
 
 @app.get("/movies")
